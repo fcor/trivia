@@ -1,28 +1,107 @@
-.App {
+body{
+  margin: 0;
+  font-family: 'Varela Round'
+}
+
+/* Fonts */
+@font-face {
+  font-family: 'Varela Round';
+  src: local('Varela Round'), url(./assets/fonts/VarelaRound.ttf) format('truetype');
+}
+
+/* Basic styles */
+.column{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.row{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+/* App Styles */
+.app{
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Onboarding Styles */
+.onboarding-step-one{
+  /* border: 1px solid red; */
+  width: 500px;
+  height: 500px;
+}
+
+.onboarding-logo{
+  margin-bottom: 150px;
+}
+
+.onboarding-step-two{
+  border: 1px solid red;
+  width: 500px;
+  height: 500px;
+}
+
+.onboarding-title{
+  font-size: 32px;
+  margin: 0 0 20px 0;
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.onboarding-text{
+  font-size: 24px;
+  margin: 0 0 20px 0;
+  text-align: center;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
+.onboarding-top{
+  height: 300px
+}
+
+.onboarding-bottom{
+  height: 200px;
+}
+
+.onboarding-circles{
+  width: 50px;
+  margin: 0 0 20px 0;
+  justify-content: space-between;
+}
+
+.circle{
+  width: 15px;
+  height: 15px;
+  border: 1px solid black;
+  border-radius: 100%;
+}
+
+.circle.selected{
+  background-color: black;
+}
+
+/* Button Styles  */
+.button{
+  border-style: none;
+  outline: 0;
+  background-color: #238276;
   color: white;
+  font-size: 18px;
+  height: 35px;
+  padding: 4px 25px 4px 25px;
+  border-radius: 2px;
+  cursor: pointer;
+  margin-bottom: 30px;
 }
 
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.button:active{
+  transform: scale(.95);
+  background-color: #1B574E;
+  /*color: #9B9B9B;*/
 }
