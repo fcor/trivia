@@ -1,10 +1,21 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
-const Button = ({children, onClick}) =>
+const Button = ({children, onClick, variant}) =>
   <button
     onClick = {onClick}
-    className="button">
+    className={`button ${variant}`}>
     {children}
   </button>
+
+Button.defaultProps = {
+  variant: 'classic'
+}
+
+Button.propTypes = {
+  children: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
+  variant: PropTypes.string
+};
 
 export default Button

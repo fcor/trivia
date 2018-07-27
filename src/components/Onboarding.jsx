@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import Button from './Button'
-import logo from '../assets/logo.png'
+import logo from '../assets/trivia.png'
 
 const setNextStep = (step) => {
   if (step === 'ONE') {
@@ -9,12 +10,12 @@ const setNextStep = (step) => {
   return 'THREE'
 }
 
-const selectButtonText = (step) => step === 'TWO' ? 'Next' : 'Begin'
+const selectButtonText = (step) => step === 'TWO' ? 'NEXT' : 'BEGIN'
 
 const selectText = (step) => (
   step === 'TWO'
     ? 'You will be presented with 10 True or False questions.'
-    : 'We are going to test your knowledge on different categories'
+    : 'We are going to test your knowledge on different categories.'
 )
 
 const getCs = (currentStep, refStep) => {
@@ -38,6 +39,10 @@ class Onboarding extends Component {
 
     const nextStep = setNextStep(step)
 
+    if (nextStep === 'TWO') {
+      this.props.toggleBg()
+    }
+
     this.setState({
       step: nextStep
     })
@@ -58,6 +63,10 @@ class Onboarding extends Component {
   }
 }
 
+Onboarding.propTypes = {
+  toggleBg: PropTypes.func.isRequired,
+};
+
 const StepOne = ({ handleNext }) =>
   <div className="onboarding-step-one column">
     <img
@@ -67,8 +76,9 @@ const StepOne = ({ handleNext }) =>
     />
     <Button
       onClick={handleNext}
+      variant={"big"}
       >
-      Start!
+      LET'S BEGIN!
     </Button>
   </div>
 
@@ -84,6 +94,9 @@ const StepTwoThree = ({ handleNext, step }) => {
         <p className="onboarding-text" >
           {text}
         </p>
+        {step === 'THREE' && (
+          <Score />
+        )}
       </div>
       <div className="onboarding-bottom column">
         <Circles step={step} />
@@ -99,7 +112,12 @@ const StepTwoThree = ({ handleNext, step }) => {
 
 const Welcome = () =>
   <p className="onboarding-title" >
-    Welcome to Trivia Game!
+    Welcome to the Trivia challenge!
+  </p>
+
+const Score = () =>
+  <p className="onboarding-text score" >
+    Can you score 100%?
   </p>
 
 const Circles = ({step}) =>

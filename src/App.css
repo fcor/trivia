@@ -1,12 +1,23 @@
 body{
   margin: 0;
-  font-family: 'Varela Round'
+  font-family: 'Open Sans'
 }
 
 /* Fonts */
 @font-face {
-  font-family: 'Varela Round';
-  src: local('Varela Round'), url(./assets/fonts/VarelaRound.ttf) format('truetype');
+  font-family: 'Open Sans';
+  src: local('Open Sans'), url(./assets/fonts/OpenSans-Regular.ttf) format('truetype');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Open Sans';
+  src: local('Open Sans'), url(./assets/fonts/OpenSans-Bold.ttf) format('truetype');
+  font-weight: 700;
+}
+@font-face {
+  font-family: 'Open Sans';
+  src: local('Open Sans'), url(./assets/fonts/OpenSans-ExtraBold.ttf) format('truetype');
+  font-weight: 800;
 }
 
 /* Basic styles */
@@ -30,78 +41,132 @@ body{
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: .5s;
 }
 
 /* Onboarding Styles */
 .onboarding-step-one{
   /* border: 1px solid red; */
-  width: 500px;
-  height: 500px;
+  /* width: 400px;
+  height: 400px; */
+
 }
 
 .onboarding-logo{
-  margin-bottom: 150px;
+  margin-bottom: 62px;
+  width: 400px;
 }
 
 .onboarding-step-two{
-  border: 1px solid red;
-  width: 500px;
-  height: 500px;
+  /* border: 1px solid red; */
+  border-radius: 20px;
+  width: 700px;
+  height: 600px;
+  background-color: white;
+  animation: animationIn .5s forwards;
+}
+
+@keyframes animationIn {
+  0%{
+    transform: translateY(-3000px);
+  }
+  60%{
+    transform: translateY(25px);
+  }
+  75%{
+    transform: translateY(-10px);
+  }
+  90%{
+    transform: translateY(5px);
+  }
 }
 
 .onboarding-title{
-  font-size: 32px;
-  margin: 0 0 20px 0;
+  width: 382px;
+  font-size: 45px;
+  color: #0E2E1F;
+  font-weight: 800;
+  margin: 0 0 90px 0;
   text-align: center;
 }
 
 .onboarding-text{
-  font-size: 24px;
+  width: 484px;
+  font-size: 28px;
+  font-weight: 700;
+  color: #64B28E;
   margin: 0 0 20px 0;
   text-align: center;
 }
 
+.onboarding-text.score{
+  margin: 20px 0;
+}
+
 .onboarding-top{
-  height: 300px
+  /* border: 1px solid red; */
+  height: 430px
 }
 
 .onboarding-bottom{
-  height: 200px;
+  /* border: 1px solid red; */
+  height: 130px;
 }
 
 .onboarding-circles{
-  width: 50px;
+  /* border: 1px solid red; */
+  width: 30px;
   margin: 0 0 20px 0;
   justify-content: space-between;
 }
 
 .circle{
-  width: 15px;
-  height: 15px;
-  border: 1px solid black;
+  width: 10px;
+  height: 10px;
+  border: 1px solid lightgray;
   border-radius: 100%;
+  transition: .3s;
 }
 
 .circle.selected{
-  background-color: black;
+  border: 1px solid #FA8070;
+  background-color: #FA8070;
 }
 
 /* Button Styles  */
 .button{
-  border-style: none;
-  outline: 0;
-  background-color: #238276;
+  text-align: center;
+  /* padding: .6em .8em .8em; */
+  border: none;
   color: white;
-  font-size: 18px;
-  height: 35px;
-  padding: 4px 25px 4px 25px;
-  border-radius: 2px;
+  margin: 5px;
+  border-radius: 20px;
   cursor: pointer;
-  margin-bottom: 30px;
+  box-shadow: inset 0 -.2em rgba(0,0,0,.2);
+  outline: 0;
+  transition: .2s;
+  will-change:transform;
+  background: #FA8070;
 }
 
 .button:active{
-  transform: scale(.95);
-  background-color: #1B574E;
-  /*color: #9B9B9B;*/
+  transform: scale(.9);
+}
+
+.button.big{
+  font-size: 38px;
+  font-weight: 800;
+  letter-spacing: 4px;
+  padding: 0px 70px 10px 70px;
+  width: 500px;
+  height: 80px;
+}
+
+.button.classic{
+  font-size: 27px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  padding: 0px 70px 6px 70px;
+  width: 250px;
+  height: 60px;
 }
