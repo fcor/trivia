@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { CSSTransition } from "react-transition-group"
 import Button from './Button'
 import logo from '../assets/trivia.png'
 
@@ -11,12 +12,6 @@ const setNextStep = (step) => {
 }
 
 const selectButtonText = (step) => step === 'TWO' ? 'NEXT' : 'BEGIN'
-
-const selectText = (step) => (
-  step === 'TWO'
-    ? 'You will be presented with 10 True or False questions.'
-    : 'We are going to test your knowledge on different categories.'
-)
 
 const getCs = (currentStep, refStep) => {
   if (currentStep === refStep) {
@@ -84,19 +79,25 @@ const StepOne = ({ handleNext }) =>
 
 const StepTwoThree = ({ handleNext, step }) => {
   const buttontext = selectButtonText(step)
-  const text = selectText(step)
   return(
     <div className="onboarding-step-two column">
       <div className="onboarding-top column">
-        {step === 'TWO' && (
-          <Welcome />
-        )}
-        <p className="onboarding-text" >
-          {text}
-        </p>
-        {step === 'THREE' && (
-          <Score />
-        )}
+        <CSSTransition
+          unmountOnExit
+          in={step === "TWO"}
+          timeout={250}
+          classNames="two"
+          >
+          <Two />
+        </CSSTransition>
+        <CSSTransition
+          unmountOnExit
+          in={step === "THREE"}
+          timeout={250}
+          classNames="three"
+          >
+          <Three />
+        </CSSTransition>
       </div>
       <div className="onboarding-bottom column">
         <Circles step={step} />
@@ -110,15 +111,25 @@ const StepTwoThree = ({ handleNext, step }) => {
   )
 }
 
-const Welcome = () =>
-  <p className="onboarding-title" >
-    Welcome to the Trivia challenge!
-  </p>
+const Two = () =>
+  <div className="onboarding-top-rtg">
+    <p className="onboarding-title" >
+      Welcome to the Trivia challenge!
+    </p>
+    <p className="onboarding-text" >
+      You will be presented with 10 True or False questions.
+    </p>
+  </div>
 
-const Score = () =>
-  <p className="onboarding-text score" >
-    Can you score 100%?
-  </p>
+const Three = () =>
+  <div className="onboarding-top-rtg">
+    <p className="onboarding-text" >
+      We are going to test your knowledge on different categories.
+    </p>
+    <p className="onboarding-text score" >
+      Can you score 100%?
+    </p>
+  </div>
 
 const Circles = ({step}) =>
   <div className="onboarding-circles row">

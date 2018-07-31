@@ -103,9 +103,48 @@ body{
   margin: 20px 0;
 }
 
+.onboarding-top-rtg{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: absolute;
+}
+
 .onboarding-top{
   /* border: 1px solid red; */
-  height: 430px
+  height: 430px;
+  /* position: absolute; */
+}
+
+.three-enter {
+  opacity: 0.01;
+  transform: scale(0.9) translateX(50%);
+}
+.three-enter-active {
+  opacity: 1;
+  transform: scale(1) translateX(0%);
+  transition: all 300ms ease-out;
+}
+
+.three-exit {
+  opacity: 1;
+  transform: scale(1) translateY(0%);
+}
+.three-exit-active {
+  opacity: 0.01;
+  transform: scale(0.9) translateY(50%);
+  transition: all 300ms ease-out;
+}
+
+.two-exit {
+  opacity: 1;
+  transform: scale(1) translateX(0%);
+}
+.two-exit-active {
+  opacity: 0.01;
+  transform: scale(0.9) translateX(-50%);
+  transition: all 300ms ease-out;
 }
 
 .onboarding-bottom{
