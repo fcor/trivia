@@ -32,6 +32,10 @@ class Onboarding extends Component {
   handleNext(){
     const { step } = this.state
 
+    if (step === 'THREE') {
+      this.props.letsPlay()
+    }
+
     const nextStep = setNextStep(step)
 
     if (nextStep === 'TWO') {
@@ -48,10 +52,14 @@ class Onboarding extends Component {
 
     return(
       <div>
-        {step === 'ONE'
-          ? <StepOne handleNext={this.handleNext} />
-          : <StepTwoThree handleNext={this.handleNext} step={step} />
-        }
+        {step === 'ONE' ? (
+          <StepOne handleNext={this.handleNext} />
+        ) : (
+          <StepTwoThree
+            handleNext={this.handleNext}
+            step={step}
+          />
+        )}
 
       </div>
     )
@@ -60,6 +68,7 @@ class Onboarding extends Component {
 
 Onboarding.propTypes = {
   toggleBg: PropTypes.func.isRequired,
+  letsPlay: PropTypes.func.isRequired,
 };
 
 const StepOne = ({ handleNext }) =>
