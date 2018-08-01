@@ -69,7 +69,7 @@ class Onboarding extends Component {
 Onboarding.propTypes = {
   toggleBg: PropTypes.func.isRequired,
   letsPlay: PropTypes.func.isRequired,
-};
+}
 
 const StepOne = ({ handleNext }) =>
   <div className="onboarding-step-one column">

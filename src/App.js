@@ -12,10 +12,13 @@ class App extends Component {
     super(props)
     this.state = {
       playground: 'ONBOARDING',
-      bgColor: lightBG
+      bgColor: lightBG,
+      questions: [],
+      answers: {}
     }
     this.toggleBg = this.toggleBg.bind(this)
     this.letsPlay = this.letsPlay.bind(this)
+    this.gameOver = this.gameOver.bind(this)
   }
 
   toggleBg(){
@@ -33,16 +36,24 @@ class App extends Component {
     })
   }
 
+  gameOver(questions, answers){
+    this.setState({
+      questions,
+      answers,
+      playground: 'RESULTS'
+    })
+  }
+
   render() {
-    const { bgColor, playground } = this.state
+    const { bgColor, playground, questions, answers } = this.state
 
     const selectContent = (playground) =>{
       if (playground === 'ONBOARDING') {
         return <Onboarding toggleBg={this.toggleBg} letsPlay={this.letsPlay} />
       } else if (playground === 'GAME') {
-        return <Game />
+        return <Game gameOver={this.gameOver} />
       }
-      return <Results />
+      return <Results questions={questions} answers={answers}/>
     }
 
     return (
