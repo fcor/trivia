@@ -132,8 +132,11 @@ const Two = () =>
 
 const Three = () =>
   <div className="onboarding-top-rtg">
-    <p className="onboarding-text" >
+    <p className="onboarding-text long" >
       We are going to test your knowledge on different categories.
+      <br/>
+      <br/>
+      After that, you will get the results and play again.
     </p>
     <p className="onboarding-text score" >
       Can you score 100%?

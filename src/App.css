@@ -60,7 +60,7 @@ body{
 .onboarding-step-two{
   /* border: 1px solid red; */
   border-radius: 20px;
-  width: 700px;
+  width: 650px;
   height: 600px;
   background-color: white;
   animation: animationIn .5s forwards;
@@ -101,6 +101,10 @@ body{
 
 .onboarding-text.score{
   margin: 20px 0;
+}
+
+.onboarding-text.long{
+  width: 510px;
 }
 
 .onboarding-top-rtg{
