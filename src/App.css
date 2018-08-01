@@ -37,7 +37,7 @@ body{
 
 /* App Styles */
 .app{
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -84,7 +84,7 @@ body{
 .onboarding-title{
   width: 382px;
   font-size: 45px;
-  color: #0E2E1F;
+  color: #2A7D57;
   font-weight: 800;
   margin: 0 0 90px 0;
   text-align: center;
@@ -175,11 +175,43 @@ body{
 /* Game Styles */
 
 .game-card{
+  animation: animationIn .5s forwards;
   background: #fff;
   border-radius: 20px;
   width: 400px;
   height: 600px;
+  margin: 20px 0;
   box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
+
+.game-card-category{
+  background-color: #FA8070;
+  color: white;
+  width: 400px;
+  height: 50px;
+  text-align: center;
+  border-radius: 15px;
+  letter-spacing: 3px;
+  font-weight: 800;
+  font-size: 32px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.game-card-category.long{
+  font-size: 18px;
+}
+
+.game-card-step{
+  text-align: center;
+  color: #2A7D57;
+  font-size: 32px;
+  font-weight: 800;
+  margin: 0;
 }
 
 .game-card-top{
@@ -225,6 +257,51 @@ body{
   font-weight: 800;
 }
 
+/* Results Styles */
+.results{
+  animation: animationIn .5s forwards;
+  padding: 30px 0;
+}
+
+.results-emoji{
+  width: 180px;
+}
+
+.results-score-text{
+  font-size: 50px;
+  font-weight: 800;
+  color: #0B301C;
+  margin: 0;
+}
+
+.results-score-text.score{
+  color: white;
+}
+
+.results-questions{
+  margin: 20px 0;
+}
+
+.results-question{
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  font-size: 20px;
+  padding: 10px 25px;
+  width: 800px;
+  height: 60px;
+  border-radius: 15px;
+  color: #707472;
+  background-color: #B1AAAA;
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.results-question.match{
+  color: #0B301C;
+  background-color: #58FCB0;
+}
+
 /* Bouncing Loader Styles */
 .bouncing-loader {
   display: flex;
@@ -235,7 +312,7 @@ body{
   width: 1rem;
   height: 1rem;
   margin: 3rem 0.2rem;
-  background: #0E2E1F;
+  background: #2A7D57;
   border-radius: 50%;
   animation: bouncing-loader 0.6s infinite alternate;
 }
@@ -304,7 +381,7 @@ body{
   width: 300px;
   height: 50px;
   background-color: #58FCB0;
-  color: #0E2E1F;
+  color: #2A7D57;
   padding: 3px 70px 10px 70px;
 }
 

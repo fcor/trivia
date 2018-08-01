@@ -6,8 +6,31 @@ import Button from './Button'
 import BouncingLoader from './BouncingLoader'
 import logo from '../assets/trivia.png'
 
+const escapeChars = (string) => {
+  return string
+      .replace(/&amp;/g, '&')
+      .replace(/&lt;/g, '<')
+      .replace(/&gt;/g, '>')
+      .replace(/&quot;/g, '"')
+      .replace(/&#039;/g, "'")
+      .replace(/&epsilon;/g, 'ε')
+      .replace(/&Phi;/g, 'φ')
+      .replace(/&ocirc;/g, 'Ô')
+}
+
 const selectQuestion = (questions, step) => {
-  return questions[step].question.replace(/&quot;/g, '"')
+  return escapeChars(questions[step].question)
+}
+
+const selectCategory = (questions, step) => {
+  return questions[step].category.toUpperCase()
+}
+
+const getCs = (category) => {
+  if (category.length <= 16 ) {
+    return 'game-card-category'
+  }
+  return 'game-card-category long'
 }
 
 class Game extends Component {
@@ -18,7 +41,7 @@ class Game extends Component {
 
     this.state = {
       questions: [],
-      answers: {},
+      answers: [],
       isLoading: true,
       error: null,
       step: 0
@@ -54,15 +77,14 @@ class Game extends Component {
 
   handleAnswer(answer){
     const { step, answers } = this.state
-    const newAnswer = { [step]: answer }
-    // const newStep = step + 1
+
     if (step === 9) {
       this.setState(prevState => ({
-        answers: {...prevState.answers, ...newAnswer},
+        answers: [...prevState.answers, answer],
       }), () => this.props.gameOver(this.state.questions, this.state.answers))
     } else {
       this.setState({
-        answers: {...answers, ...newAnswer},
+        answers: [...answers, answer],
         step: step + 1
       })
     }
@@ -70,12 +92,24 @@ class Game extends Component {
 
   render() {
     const { error, isLoading, step, questions } = this.state
+
     let question
-    if (!isLoading && questions.length > 0) {
+    let category
+
+    const isPlaying = !isLoading && questions.length > 0
+
+    if (isPlaying) {
       question = selectQuestion(questions, step)
+      category = selectCategory(questions, step)
     }
+
     return(
       <div>
+        { isPlaying &&
+            <p className={getCs(category)}>
+              {`${category}`}
+            </p>
+        }
         { error ? (
           <p className="error">Something went wrong :(</p>
         ) : (
@@ -85,6 +119,11 @@ class Game extends Component {
             handleAnswer={this.handleAnswer}
           />
         )}
+        { isPlaying &&
+            <p className="game-card-step">
+              {`${step + 1}/10`}
+            </p>
+        }
       </div>
     )
   }
@@ -112,13 +151,13 @@ const Card = ({question, handleAnswer}) =>{
       <div className="game-card-bottom column">
         <Button
           variant="true"
-          onClick={() => handleAnswer('true')}
+          onClick={() => handleAnswer('True')}
           >
           TRUE
         </Button>
         <Button
           variant="false"
-          onClick={() => handleAnswer('false')}
+          onClick={() => handleAnswer('False')}
           >
           FALSE
         </Button>
