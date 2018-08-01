@@ -77,6 +77,7 @@ body{
   height: 600px;
   background-color: white;
   animation: animationIn .5s forwards;
+  position: relative;
 }
 
 @keyframes animationIn {
