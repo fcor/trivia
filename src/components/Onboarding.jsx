@@ -90,6 +90,7 @@ const StepTwoThree = ({ handleNext, step }) => {
   const buttontext = selectButtonText(step)
   return(
     <div className="onboarding-step-two column">
+      <div className="box"></div>
       <div className="onboarding-top column">
         <CSSTransition
           unmountOnExit
